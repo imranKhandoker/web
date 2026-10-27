@@ -1,0 +1,261 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.gallery-section {
+    width: 100%;
+    min-height: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: #111;
+    perspective: 1000px;
+}
+
+.gallery-slider {
+    --total: 6;
+    --radius: 320px;
+
+    position: relative;
+    width: 200px;
+    height: 260px;
+    transform-style: preserve-3d;
+    animation: rotateGallery 20s linear infinite;
+}
+
+.gallery-item {
+    position: absolute;
+    inset: 0;
+    transform:
+        rotateY(calc(360deg / var(--total) * var(--i)))
+        translateZ(var(--radius));
+    backface-visibility: visible;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 3px solid #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,.5);
+}
+
+
+.gallery-item {
+    position: absolute;
+    inset: 0;
+    transform:
+        rotateY(calc(360deg / var(--total) * var(--i)))
+        translateZ(var(--radius));
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    cursor: pointer;
+
+    transition:
+        scale 0.5s ease,
+        box-shadow 0.5s ease,
+        filter 0.5s ease;
+}
+
+/* Hover Animation */
+.gallery-item:hover img {
+    scale: 1.15;
+    box-shadow: 0 15px 40px rgba(255,255,255,0.25);
+    filter: brightness(1.15);
+}
+
+.gallery-item:hover img {
+    scale: 1.2;
+    box-shadow:
+        0 0 15px rgba(255,255,255,0.4),
+        0 0 35px rgba(255,255,255,0.2);
+    filter: brightness(1.1);
+}
+
+
+.gallery-slider {
+    --total: 12;
+    --radius: 380px;
+
+    position: relative;
+    width: 200px;
+    height: 260px;
+    transform-style: preserve-3d;
+    animation: rotateGallery 25s linear infinite;
+}
+.gallery-slider {
+    --total: 12;
+    --radius: 400px;
+
+    width: 200px;
+    height: 260px;
+}
+
+.gallery-item {
+    position: absolute;
+    inset: 0;
+    transform:
+        rotateY(calc(360deg / var(--total) * var(--i)))
+        translateZ(var(--radius));
+}
+
+
+@keyframes rotateGallery {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+/* Tablet */
+@media (max-width: 991px) {
+    .gallery-section {
+        min-height: 450px;
+    }
+
+    .gallery-slider {
+        width: 160px;
+        height: 210px;
+        --radius: 240px;
+    }
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    background-color: #111;
+}
+
+.gallery-section {
+    background-color: #111;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+    .gallery-section {
+        min-height: 350px;
+        perspective: 800px;
+    }
+
+    .gallery-slider {
+        width: 110px;
+        height: 150px;
+        --radius: 155px;
+    }
+
+    .gallery-item img {
+        border-radius: 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gallery-slider {
+        animation: none;
+    }
+}
+
+
+/* Tablet */
+@media (max-width: 991px) {
+    .gallery-section {
+        min-height: 450px;
+        perspective: 1000px;
+    }
+
+    .gallery-slider {
+        --total: 12;
+        --radius: 300px;
+
+        width: 150px;
+        height: 210px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .gallery-section {
+        min-height: 350px;
+        width: 100%;
+        overflow: hidden;
+        perspective: 800px;
+    }
+
+    .gallery-slider {
+        --total: 12;
+        --radius: 210px;
+
+        width: 100px;
+        height: 150px;
+    }
+
+    .gallery-item img {
+        border-radius: 10px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .gallery-section {
+        min-height: 300px;
+        perspective: 650px;
+    }
+
+    .gallery-slider {
+        --total: 12;
+        --radius: 155px;
+
+        width: 75px;
+        height: 115px;
+    }
+
+    .gallery-item img {
+        border-radius: 8px;
+        border-width: 2px;
+    }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+    .gallery-section {
+        min-height: 260px;
+        perspective: 550px;
+    }
+
+    .gallery-slider {
+        --radius: 135px;
+
+        width: 65px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 767px) {
+    html, body {
+        background: #111;
+    }
+
+    .gallery-section {
+        min-height: 100vh;
+        min-height: 100dvh;
+        background: #111;
+    }
+}
